@@ -409,6 +409,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  oauth2:
+    dependency: transitive
+    description:
+      name: oauth2
+      sha256: "1e8376c222651904caf7785fd2fa01b1e2be608c94bec842a94e116deca88f13"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   package_config:
     dependency: transitive
     description:
@@ -473,6 +481,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.2.4"
+  pub_api_client:
+    dependency: "direct main"
+    description:
+      name: pub_api_client
+      sha256: d4bc6c9ec778da1a79675eab41bde456b392973216acd783156afaee69230e22
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.0"
   pub_semver:
     dependency: transitive
     description:
@@ -489,6 +505,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.4"
+  pubspec:
+    dependency: transitive
+    description:
+      name: pubspec
+      sha256: f534a50a2b4d48dc3bc0ec147c8bd7c304280fff23b153f3f11803c4d49d927e
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.0"
   pubspec2:
     dependency: transitive
     description:

@@ -1,3 +1,3 @@
 library spub;
 
-export 'src/pub_path.dart';
+export 'src/pub_package.dart';
