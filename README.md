@@ -7,7 +7,7 @@
 
 #### Activate
 ````bash
-git clone 
+git clone https://github.com/jayjah/spub.git
 cd spub 
 dart pub global activate --source path .
 ````
