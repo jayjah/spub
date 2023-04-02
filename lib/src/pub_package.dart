@@ -41,7 +41,7 @@ class PubPackage {
     }
   }
 
-  Progress openPackage() {
+  Progress open() {
     late final String osBrowser;
     if (Platform.isMacOS)
       osBrowser = 'open';

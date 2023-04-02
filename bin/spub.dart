@@ -8,10 +8,11 @@ import 'package:pub_api_client/pub_api_client.dart' show PubClient;
 import 'package:spub/spub.dart' as spub;
 
 Future<void> main(List<String> arguments) async {
-  final ArgResults parser = ArgParser().parse(arguments);
   final PubClient client = PubClient();
-  final Iterable<spub.PubPackage> allPackages =
-      parser.rest.map((String argument) => spub.PubPackage(
+  final Iterable<spub.PubPackage> allPackages = ArgParser()
+      .parse(arguments)
+      .rest
+      .map((String argument) => spub.PubPackage(
             argument,
             client: client,
           ));
@@ -26,10 +27,10 @@ Future<void> main(List<String> arguments) async {
     }
 
     print(green('Opening package: $packageName'));
-    package
-      ..openPackage()
-      ..dispose();
+    package.open();
   }
+
+  client.close();
 
   exit(0);
 }
