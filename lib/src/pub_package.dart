@@ -7,21 +7,21 @@ import 'package:meta/meta.dart' show visibleForTesting;
 import 'package:pub_api_client/pub_api_client.dart';
 
 class PubPackage {
-  const PubPackage(this._packageName);
+  PubPackage(this._packageName, {PubClient? client})
+      : _pubClient = client ?? PubClient();
   final String _packageName;
+  final PubClient _pubClient;
 
   static const String _pubPath = 'https://www.pub.dev/packages/';
 
   String get name => _packageName;
 
   @visibleForTesting
-  Uri get pubPathAsUri {
-    return Uri.parse('$_pubPath$_packageName');
-  }
+  Uri get pubPathAsUri => Uri.parse('$_pubPath$_packageName');
 
   Future<bool> exist() async {
     try {
-      await PubClient().packageInfo(_packageName);
+      await _pubClient.packageInfo(_packageName);
 
       return true;
     } on Exception {
@@ -31,7 +31,7 @@ class PubPackage {
 
   Future<List<String>> searchForSimilarPackages() async {
     try {
-      final SearchResults searchResult = await PubClient().search(_packageName);
+      final SearchResults searchResult = await _pubClient.search(_packageName);
 
       return searchResult.packages
           .map((PackageResult e) => e.package)
@@ -41,7 +41,7 @@ class PubPackage {
     }
   }
 
-  Progress search() {
+  Progress openPackage() {
     late final String osBrowser;
     if (Platform.isMacOS)
       osBrowser = 'open';
@@ -55,5 +55,9 @@ class PubPackage {
       );
 
     return '$osBrowser ${pubPathAsUri.toString()}'.start(runInShell: true);
+  }
+
+  void dispose() {
+    _pubClient.close();
   }
 }
